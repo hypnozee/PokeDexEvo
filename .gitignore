@@ -1,0 +1,42 @@
+# Gradle
+.gradle/
+**/build/
+
+# Local configuration
+local.properties
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+.kotlin/
+
+# Native/NDK & external builds
+.externalNativeBuild/
+.cxx/
+**/obj/
+
+# Captures (Android Studio)
+**/captures/
+
+# Keystores & signing (keep these out of VCS)
+*.jks
+*.keystore
+keystore.properties
+signing.properties
+
+# Logs & heap dumps
+*.log
+*.hprof
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Optional: Fastlane artifacts (if you use Fastlane)
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+
+# Optional: VS Code settings (if you sometimes open the project there)
+.vscode/
