@@ -1,4 +1,4 @@
-package io.hypnozee.pokedexevo.ui.theme
+package io.zee.pokedexevo.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

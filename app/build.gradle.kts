@@ -5,19 +5,20 @@ plugins {
 }
 
 android {
-    namespace = "io.hypnozee.pokedexevo"
-    compileSdk {
-        version = release(36)
-    }
+    namespace = "io.zee.pokedexevo"
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "io.hypnozee.pokedexevo"
+        applicationId = "io.zee.pokedexevo"
         minSdk = 31
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -29,32 +30,36 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+
     buildFeatures {
         compose = true
+    }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 }
 
 dependencies {
+    // Project Modules
+    implementation(project(":domain"))
+    implementation(project(":data"))
+
+    // AndroidX & Compose
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.graphics)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.bundles.compose)
+
+    // Koin
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+
+    // Testing
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.bundles.android.test)
+    debugImplementation(libs.bundles.compose.debug)
 }

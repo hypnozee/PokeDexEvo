@@ -1,4 +1,4 @@
-package io.hypnozee.pokedexevo
+package io.zee.pokedexevo
 
 import org.junit.Test
 
